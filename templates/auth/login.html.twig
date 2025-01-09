@@ -5,7 +5,7 @@
 {% block body %}
     <div class="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
         <div class="card max-w-[370px] w-full">
-            <form action="{{ path('auth.login') }}" class="card-body flex flex-col gap-5 p-10" id="sign_in_form" method="post">
+            <form action="{{ path('app_login') }}" class="card-body flex flex-col gap-5 p-10" id="sign_in_form" method="post">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <div class="text-center mb-2.5">
                     <h3 class="text-lg font-medium text-gray-900 leading-none mb-2.5">
@@ -15,14 +15,19 @@
                        <span class="text-2sm text-gray-700 me-1.5">
                         Pas de compte ?
                        </span>
-                        <a class="text-2sm link" href="{{ path('auth.register') }}">
+                        <a class="text-2sm link" href="{{ path('app_register') }}">
                             Inscription
                         </a>
                     </div>
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label for="email" class="form-label font-normal text-gray-900">Email</label>
-                    <input id="email" type="text" name="_username" class="input" placeholder="Adresse email" />
+                    <label for="email" class="form-label font-normal text-gray-900">
+                        Email
+                    </label>
+                    <div class="input">
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                        {# <input id="email" type="text" name="_username" class="input" placeholder="Adresse email" /> #}
+                    </div>
                 </div>
                 <div class="flex flex-col gap-1">
                     <div class="flex items-center justify-between gap-1">
@@ -31,7 +36,8 @@
                         </label>
                     </div>
                     <div class="input" data-toggle-password="true">
-                        <input name="_password" placeholder="Mot de passe" type="password" value=""/>
+                        {# <input name="_password" placeholder="Mot de passe" type="password" value=""/> #}
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                         <button class="btn btn-icon" data-toggle-password-trigger="true" type="button">
                             <i class="ki-filled ki-eye text-gray-500 toggle-password-active:hidden">
                             </i>
@@ -40,6 +46,11 @@
                         </button>
                     </div>
                 </div>
+                {# <div class="checkbox mb-3">
+                    <label class="font-normal text-sm text-gray-900">
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
+                    </label>
+                </div> #}
                 <button type="submit" class="btn btn-primary flex justify-center grow">Connexion</button>
             </form>
         </div>
