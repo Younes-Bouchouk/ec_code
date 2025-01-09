@@ -12,9 +12,9 @@
                         Connexion
                     </h3>
                     <div class="flex items-center justify-center font-medium">
-                       <span class="text-2sm text-gray-700 me-1.5">
-                        Pas de compte ?
-                       </span>
+                        <span class="text-2sm text-gray-700 me-1.5">
+                            Pas de compte ?
+                        </span>
                         <a class="text-2sm link" href="{{ path('app_register') }}">
                             Inscription
                         </a>
@@ -26,9 +26,9 @@
                     </label>
                     <div class="input">
                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                        {# <input id="email" type="text" name="_username" class="input" placeholder="Adresse email" /> #}
                     </div>
                 </div>
+
                 <div class="flex flex-col gap-1">
                     <div class="flex items-center justify-between gap-1">
                         <label class="form-label font-normal text-gray-900">
@@ -36,7 +36,6 @@
                         </label>
                     </div>
                     <div class="input" data-toggle-password="true">
-                        {# <input name="_password" placeholder="Mot de passe" type="password" value=""/> #}
                         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                         <button class="btn btn-icon" data-toggle-password-trigger="true" type="button">
                             <i class="ki-filled ki-eye text-gray-500 toggle-password-active:hidden">
@@ -46,11 +45,13 @@
                         </button>
                     </div>
                 </div>
-                {# <div class="checkbox mb-3">
-                    <label class="font-normal text-sm text-gray-900">
-                        <input type="checkbox" name="_remember_me"> Se souvenir de moi ?
-                    </label>
-                </div> #}
+
+                {% if error %}
+                    <div class="text-red-900 text-xs text-center mb-4">
+                        {{ error.message }}
+                    </div>
+                {% endif %}
+
                 <button type="submit" class="btn btn-primary flex justify-center grow">Connexion</button>
             </form>
         </div>

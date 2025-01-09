@@ -23,17 +23,14 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
             $confirmPassword = $form->get('confirmPassword')->getData();
 
-            // Validation côté contrôleur en plus pour assurer la correspondance
             if ($plainPassword !== $confirmPassword) {
                 $this->addFlash('error', 'Les mots de passe ne correspondent pas.');
                 return $this->redirectToRoute('app_register');
             }
 
-            // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
             $entityManager->persist($user);

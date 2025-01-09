@@ -24,7 +24,9 @@
                 <div class="flex flex-col gap-1">
                     {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'form-label text-gray-900'}}) }}
                     {{ form_widget(registrationForm.email, {'attr': {'class': 'input', 'placeholder': 'Adresse email'}}) }}
-                    {{ form_errors(registrationForm.email) }}
+                    <div class="text-red-900 text-xs text-center">
+                        {{ form_errors(registrationForm.email) }}
+                    </div>
                 </div>
 
                 <div class="flex flex-col gap-1">
@@ -36,7 +38,9 @@
                             <i class="ki-filled ki-eye-slash text-gray-500 hidden toggle-password-active:block"></i>
                         </button>
                     </div>
-                    {{ form_errors(registrationForm.plainPassword) }}
+                    <div class="text-red-900 text-xs text-center">
+                        {{ form_errors(registrationForm.plainPassword) }}
+                    </div>
                 </div>
 
                 <div class="flex flex-col gap-1">
@@ -48,14 +52,10 @@
                             <i class="ki-filled ki-eye-slash text-gray-500 hidden toggle-password-active:block"></i>
                         </button>
                     </div>
-                    {{ form_errors(registrationForm.confirmPassword ) }}
+                    <div class="text-red-900 text-xs text-center">
+                        {{ form_errors(registrationForm.confirmPassword ) }}
+                    </div>
                 </div>
-
-                {# <div class="flex flex-col gap-1">
-                    {{ form_label(registrationForm.agreeTerms, 'Accepter les conditions', {'label_attr': {'class': 'form-label text-gray-900'}}) }}
-                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'checkbox checkbox-sm'}}) }}
-                    {{ form_errors(registrationForm.agreeTerms) }}
-                </div> #}
 
                 <button class="btn btn-primary flex justify-center grow" type="submit">
                     Inscription
